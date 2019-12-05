@@ -1,3 +1,23 @@
+Creates an AWS Transfer for SFTP endpoint.
+
+Creates the following resources:
+
+* AWS Transfer for SFTP Server.
+* IAM role for logging.
+* Route53 record for Transfer endpoint (optional).
+
+## Usage
+
+```hcl
+module "sftp" {
+  source        = "trussworks/sftp/aws"
+  name          = "myapp-sftp-endpoint"
+  domain_name   = "sftp.example.com"
+  iam_role_name = "sftp-logging-role"
+  zone_id       = data.aws_route53_zone.main.zone_id
+}`
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
