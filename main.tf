@@ -12,6 +12,7 @@
  * ```hcl
  * module "sftp" {
  *   source        = "trussworks/sftp/aws"
+ *   version       = "~> 1.0.0"
  *   name          = "myapp-sftp-endpoint"
  *   domain_name   = "sftp.example.com"
  *   iam_role_name = "sftp-logging-role"
