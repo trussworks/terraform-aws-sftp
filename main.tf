@@ -15,7 +15,9 @@ data "aws_iam_policy_document" "assume_role_policy" {
 
 resource "aws_iam_role" "main" {
   name               = var.iam_role_name
+  description        = var.iam_role_description
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  tags               = var.tags
 }
 
 data "aws_iam_policy_document" "role_policy" {
@@ -46,10 +48,10 @@ resource "aws_transfer_server" "main" {
 
   endpoint_type = "PUBLIC"
 
-  tags = {
+  tags = merge({
     Name       = var.name
     Automation = "Terraform"
-  }
+  }, var.tags)
 }
 
 resource "aws_route53_record" "main" {

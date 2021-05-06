@@ -38,8 +38,10 @@ module "sftp" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | domain\_name | Domain name of the SFTP Endpoint as a CNAME record.  Also requires zone\_id. | `string` | `""` | no |
+| iam\_role\_description | Description of the AWS Transfer Server IAM Role used for logging to CloudWatch Logs | `string` | `"IAM Role used by AWS Transfer Server to log to Cloudwatch"` | no |
 | iam\_role\_name | Name of the AWS Transfer Server IAM Role used for logging to CloudWatch Logs | `string` | `"sftp-logging-role"` | no |
 | name | Name of the AWS Transfer Server | `string` | n/a | yes |
+| tags | Additional tags | `map(string)` | `{}` | no |
 | zone\_id | Route53 Zone ID of the SFTP Endpoint CNAME record.  Also requires domain\_name. | `string` | `""` | no |
 
 ## Outputs
