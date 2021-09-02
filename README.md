@@ -16,7 +16,7 @@ module "sftp" {
   domain_name   = "sftp.example.com"
   iam_role_name = "sftp-logging-role"
   zone_id       = data.aws_route53_zone.main.zone_id
-}`
+}
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
