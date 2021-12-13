@@ -41,12 +41,25 @@ resource "aws_iam_role_policy" "main" {
 }
 
 resource "aws_transfer_server" "main" {
-
   identity_provider_type = "SERVICE_MANAGED"
+  logging_role           = aws_iam_role.main.arn
 
-  logging_role = aws_iam_role.main.arn
+  endpoint_type          = var.endpoint_type
+  dynamic "endpoint_details" {
+    for_each = var.endpoint_details
 
-  endpoint_type = "PUBLIC"
+    content {
+      address_allocation_ids = endpoint_details.value["address_allocation_ids"]
+      subnet_ids             = endpoint_details.value["subnet_ids"]
+      vpc_id                 = endpoint_details.value["vpc_id"]
+      security_group_ids     = endpoint_details.value["security_group_ids"]
+    }
+  }
+
+  protocols              = var.protocols
+  host_key               = var.host_key
+  security_policy_name   = var.security_policy_name
+  certificate            = var.certificate
 
   tags = merge({
     Name       = var.name
