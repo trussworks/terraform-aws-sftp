@@ -40,7 +40,7 @@ variable "endpoint_type" {
 }
 
 variable "endpoint_details" {
-  type        = map(object({
+  type = map(object({
     address_allocation_ids = list(string)
     subnet_ids             = list(string)
     vpc_id                 = string

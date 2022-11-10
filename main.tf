@@ -44,7 +44,7 @@ resource "aws_transfer_server" "main" {
   identity_provider_type = "SERVICE_MANAGED"
   logging_role           = aws_iam_role.main.arn
 
-  endpoint_type          = var.endpoint_type
+  endpoint_type = var.endpoint_type
   dynamic "endpoint_details" {
     for_each = var.endpoint_details
 
@@ -56,10 +56,10 @@ resource "aws_transfer_server" "main" {
     }
   }
 
-  protocols              = var.protocols
-  host_key               = var.host_key
-  security_policy_name   = var.security_policy_name
-  certificate            = var.certificate
+  protocols            = var.protocols
+  host_key             = var.host_key
+  security_policy_name = var.security_policy_name
+  certificate          = var.certificate
 
   tags = merge({
     Name       = var.name
