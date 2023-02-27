@@ -19,7 +19,7 @@ module "sftp" {
 }
 ```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -73,4 +73,4 @@ No modules.
 |------|-------------|
 | sftp\_server\_endpoint | The endpoint of the Transfer Server |
 | sftp\_server\_id | Server ID of the AWS Transfer Server (aka SFTP Server) |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
