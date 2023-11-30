@@ -40,6 +40,10 @@ resource "aws_iam_role_policy" "main" {
   policy = data.aws_iam_policy_document.role_policy.json
 }
 
+resource "aws_cloudwatch_log_group" "transfer" {
+  name_prefix = "s-"
+}
+
 resource "aws_transfer_server" "main" {
   identity_provider_type = "SERVICE_MANAGED"
   logging_role           = aws_iam_role.main.arn
@@ -57,6 +61,9 @@ resource "aws_transfer_server" "main" {
   }
 
   protocols            = var.protocols
+  structured_log_destinations = [
+    "${aws_cloudwatch_log_group.transfer.arn}:*"
+  ]
   host_key             = var.host_key
   security_policy_name = var.security_policy_name
   certificate          = var.certificate
